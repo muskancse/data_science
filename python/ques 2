@@ -1,0 +1,11 @@
+def add(a, b): return a + b
+
+def check(lst, a, b):
+    s, m = add(a, b), lst[len(lst) // 2]
+    if   s > m: print(set(lst[:len(lst) // 2]))
+    elif s == m: print({len(lst) // 2: m})
+    else:        print(tuple(lst[len(lst) // 2 + 1:]))
+
+check([1, 2], 1, 2)   
+check([1, 2], 0, 2)   
+check([1, 2], 0, 1)   

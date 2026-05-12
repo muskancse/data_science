@@ -1,0 +1,21 @@
+from statistics import mean, median, mode
+
+def to_matrix(lst):
+    p = list(lst) + [None] * (9 - len(lst))
+    return [p[i:i+3] for i in range(0, 9, 3)]
+
+def to_stats(lst):
+    t = tuple(lst)
+    n = [x for x in t if x is not None]
+    return {"tuple": t, "mean": mean(n), "median": median(n), "mode": mode(n)}
+
+def map_both(lst):
+    m, s = to_matrix(lst), to_stats(lst)
+    return {tuple(row): {k: s[k]} for row, k in zip(m, ["mean", "median", "mode"])}
+
+lst = [4, 8, 15, 16, 23, 42, 8]
+print("Matrix :", to_matrix(lst))
+print("Stats  :", to_stats(lst))
+print("Mapped :")
+for k, v in map_both(lst).items():
+    print(" ", k, "->", v)
